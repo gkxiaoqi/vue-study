@@ -24,6 +24,15 @@ export const commonRoutes = [
         },
         component: Home,
       },
+      {
+        path: "home1",
+        name: "home1",
+        meta: {
+          title: "流星特效",
+          target: "_blank",
+        },
+        component: () => import("@/pages/home/home1.vue"),
+      },
     ],
   },
   {

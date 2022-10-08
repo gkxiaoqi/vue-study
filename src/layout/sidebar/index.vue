@@ -28,7 +28,13 @@
         :key="child.id"
         :index="index + '-' + childIndex"
       >
-        <router-link :to="child.url" class="menu-name">{{
+        <a
+          :target="child.target"
+          v-if="child.target"
+          @click="handleOpenNewWindow"
+          >{{ child.name }}</a
+        >
+        <router-link :to="child.url" class="menu-name" v-else>{{
           child.name
         }}</router-link>
       </el-menu-item>
@@ -38,6 +44,8 @@
 
 <script setup>
 import { reactive } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const menuList = reactive([
   {
     id: 1,
@@ -46,9 +54,16 @@ const menuList = reactive([
     meta: {
       icon: "House",
     },
-    children: [{ id: 3, name: "运营中心", url: "/home" }],
+    children: [
+      { id: 3, name: "运营中心", url: "/home" },
+      { id: 4, name: "流星特效", url: "/home1", target: "_blank" },
+    ],
   },
 ]);
+const handleOpenNewWindow = () => {
+  const routerData = router.resolve({ name: "home1" });
+  window.open(routerData.href, "_blank");
+};
 </script>
 
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@
 
 export default {
   state: {
-    isCollapse: false, // 控制菜单展开与折叠
+    isCollapse: true, // 控制菜单展开与折叠
     menuList: [],
   },
   mutations: {

@@ -1,6 +1,9 @@
 <template>
   <div class="common-layout">
-    <el-container>
+    <el-container v-if="isNewWindow">
+      <router-view />
+    </el-container>
+    <el-container v-else>
       <el-aside class="sidebar">
         <Sidebar></Sidebar>
       </el-aside>
@@ -19,16 +22,15 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Sidebar from "./sidebar/index.vue";
 import Header from "./header/index.vue";
 import Breadcrumb from "./breadcrumb/index.vue";
-export default {
-  setup() {
-    return {};
-  },
-  components: { Sidebar, Header, Breadcrumb },
-};
+import { useRoute } from "vue-router";
+import { ref } from "vue";
+
+const route = useRoute();
+const isNewWindow = ref(route.meta.target);
 </script>
 
 <style lang="scss" scoped>
