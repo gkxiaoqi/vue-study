@@ -57,6 +57,7 @@ const menuList = reactive([
     children: [
       { id: 3, name: "运营中心", url: "/home" },
       { id: 4, name: "流星特效", url: "/home1", target: "_blank" },
+      { id: 5, name: "Canvas", url: "/canvas" },
     ],
   },
 ]);

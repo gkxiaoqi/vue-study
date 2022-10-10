@@ -33,6 +33,14 @@ export const commonRoutes = [
         },
         component: () => import("@/pages/home/home1.vue"),
       },
+      {
+        path: "canvas",
+        name: "canvas",
+        meta: {
+          title: "Canvas",
+        },
+        component: () => import("@/pages/canvas/index.vue"),
+      },
     ],
   },
   {
