@@ -91,7 +91,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 const content1 = ref();
 const content2 = ref();
@@ -99,6 +99,8 @@ const content3 = ref();
 const content4 = ref();
 let current = ref(0);
 let pause = ref(false);
+let interval1 = null;
+let interval2 = null;
 
 const anim1 = "nav-anim-1 3s ease-in-out both";
 const anim2 = "nav-anim-2 3s ease-in-out both";
@@ -150,9 +152,9 @@ const switchCurrentNav = (index) => {
         break;
     }
   };
-  const interval = setInterval(() => {
+  interval1 = setInterval(() => {
     if (index === current.value) {
-      clearInterval(interval);
+      clearInterval(interval1);
     } else {
       switchNav();
     }
@@ -160,7 +162,7 @@ const switchCurrentNav = (index) => {
 };
 
 onMounted(() => {
-  setInterval(() => {
+  interval2 = setInterval(() => {
     if (!pause.value) {
       current.value = current.value >= 3 ? 0 : current.value + 1;
       switch (current.value) {
@@ -193,6 +195,11 @@ onMounted(() => {
       }
     }
   }, 6000);
+});
+
+onUnmounted(() => {
+  clearInterval(interval1);
+  clearInterval(interval2);
 });
 </script>
 
