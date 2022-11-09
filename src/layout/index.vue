@@ -14,7 +14,9 @@
         <el-main>
           <Breadcrumb></Breadcrumb>
           <div class="layout-content">
-            <div class="layout-main"><router-view /></div>
+            <div :class="{ 'layout-main': !route.meta.withoutContainer }">
+              <router-view />
+            </div>
           </div>
         </el-main>
       </el-container>
@@ -23,11 +25,11 @@
 </template>
 
 <script setup>
-import Sidebar from "./sidebar/index.vue";
-import Header from "./header/index.vue";
-import Breadcrumb from "./breadcrumb/index.vue";
-import { useRoute } from "vue-router";
-import { ref } from "vue";
+import Sidebar from './sidebar/index.vue';
+import Header from './header/index.vue';
+import Breadcrumb from './breadcrumb/index.vue';
+import { useRoute } from 'vue-router';
+import { ref } from 'vue';
 
 const route = useRoute();
 const isNewWindow = ref(route.meta.target);
@@ -56,12 +58,10 @@ const isNewWindow = ref(route.meta.target);
 .sidebar-hide {
   width: 70px;
 }
-.layout-content {
-  padding: 15px;
-}
 .layout-main {
   background-color: #fff;
   padding: 15px;
   min-height: 40vh;
+  margin: 15px;
 }
 </style>

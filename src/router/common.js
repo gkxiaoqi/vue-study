@@ -1,68 +1,77 @@
-import Layout from "@/layout/index.vue";
-import Home from "@/pages/home/index.vue";
+import Layout from '@/layout/index.vue';
+import Home from '@/pages/home/index.vue';
 
 export const commonRoutes = [
   {
-    path: "/login",
-    name: "登录",
-    component: () => import("@/pages/login/index.vue"),
+    path: '/login',
+    name: '登录',
+    component: () => import('@/pages/login/index.vue'),
   },
   {
-    path: "/",
-    name: "home",
+    path: '/',
+    name: 'home',
     component: Layout,
     meta: {
-      title: "运营中心",
+      title: '运营中心',
     },
-    redirect: "/home",
+    redirect: '/home',
     children: [
       {
-        path: "home",
-        name: "home",
+        path: 'home',
+        name: 'home',
         meta: {
-          title: "控制台",
+          title: '控制台',
         },
         component: Home,
       },
       {
-        path: "home1",
-        name: "home1",
+        path: 'home1',
+        name: 'home1',
         meta: {
-          title: "流星特效",
-          target: "_blank",
+          title: '流星特效',
+          target: '_blank',
         },
-        component: () => import("@/pages/home/home1.vue"),
+        component: () => import('@/pages/home/home1.vue'),
       },
       {
-        path: "canvas",
-        name: "canvas",
+        path: 'canvas',
+        name: 'canvas',
         meta: {
-          title: "Canvas",
+          title: 'Canvas',
         },
-        component: () => import("@/pages/canvas/index.vue"),
+        component: () => import('@/pages/canvas/index.vue'),
+      },
+      {
+        path: 'map',
+        name: 'map',
+        meta: {
+          title: 'map',
+          withoutContainer: true,
+        },
+        component: () => import('@/pages/map/index.vue'),
       },
     ],
   },
   {
-    path: "/404",
-    name: "404",
+    path: '/404',
+    name: '404',
     component: Layout,
     meat: {
-      title: "Error",
+      title: 'Error',
     },
     children: [
       {
-        path: "",
-        name: "404Page",
+        path: '',
+        name: '404Page',
         mata: {
-          title: "404",
+          title: '404',
         },
-        component: () => import("@/pages/common/404.vue"),
+        component: () => import('@/pages/common/404.vue'),
       },
     ],
   },
   {
-    path: "/:pathMatch(.*)",
-    redirect: "/404",
+    path: '/:pathMatch(.*)',
+    redirect: '/404',
   },
 ];
